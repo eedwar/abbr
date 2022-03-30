@@ -1,59 +1,110 @@
 // E.Edwards. 2022.
 // a2z :: A :: abbr.
 
-// something what "abbrivates" text
+// something what "abbreviate" text
 
 PImage abbr;
 float bit;
+
+boolean mouseClick = false;
+int clickCount = 0;
+int mouseXPos;
+
+color pink = color( 255, 28, 126 );
 void setup() {
 
-  background( 255, 28, 126 );
+  background( pink);
   size( 1024, 1024 );
 
   // load image data
   abbr = loadImage( "abbr_01.png" );
 
   // load pixel data
-  loadPixels();
+  abbr.loadPixels();
 
   // log red value for pixels
   for ( int i = 0; i < abbr.pixels.length; i++ ) {
-    print( red( abbr.pixels[ i ] ) + " , " );
+    //print( red( abbr.pixels[ i ] ) + " , " );
   }
+
+  for (int x = 0; x < abbr.width; x++) {
+    for (int y = 0; y < abbr.height; y++ ) {
+
+      // Calculate the 1D location from a 2D grid
+      int loc = x + y * abbr.width;
+
+      // Get the R,G,B values from image
+      float r;
+      r = red( abbr.pixels[ loc ] );
+
+      // set pixels to desired
+      color c;
+      if ( r < 255 ) {
+        c = color( 0 );
+
+
+        abbr.pixels[ y * width + x  ] = c;
+      } else {
+
+        // update run window with pixels
+        abbr.pixels[ y * width + x  ] = pink;
+      }
+    }
+  }
+  // update run window with pixels
+  abbr.updatePixels();
 }
 
 void draw() {
-  for (int x = 0; x < abbr.width; x++) {
-      for (int y = 0; y < abbr.height; y++ ) {
+  image( abbr, 0, 0 );
+}
 
-        // Calculate the 1D location from a 2D grid
-        int loc = x + y * abbr.width;
+void mouseDragged() {
+  if ( !mouseClick ) {
+    mouseXPos = mouseX;
+    println(mouseXPos);
+    mouseClick = true;
+    clickCount++;
+  }
 
-        // Get the R,G,B values from image
-        float r, g, b;
-        r = red( abbr.pixels[ loc ] );
-        g = green( abbr.pixels[ loc ] );
-        b = blue( abbr.pixels[ loc ] );
+  for (int x = 0; x < abbr.width - 1; x++) {
+    for (int y = 0; y < abbr.height -1; y++ ) {
 
-        // set pixels to desired
-        color c;
-        if ( r < 255 ) {
+      // Calculate the 1D location from a 2D grid
+      int loc = x + y * abbr.width;
+
+      // Get the R,G,B values from image
+      float r, r1;
+      r = red( abbr.pixels[ loc ] );
+      r1 = red( abbr.pixels[ loc + 1 ] );
+      // set pixels to desired
+      color c;
+      if ( r < 255 && r1 >= 255) {
+        if ( clickCount % 2 == 0 ) {
           c = color( 0 );
+        } else {
+          c = color( 255 );
+        }
 
-          if ( y % 2 == 0 ) {
-
-            pixels[ y * width + x + mouseX ] = c;
-          }
+        if ( y % 10 < 5 ) {
+          //blendMode(LIGHTEST);
+          abbr.pixels[ y * width + x + mouseX - mouseXPos ] = c;
+        }
+      } else if ( r < 255 ) {
+        c = color( 255, 28, 126 );
+        if ( y % 10 < 10 && y % 10 > 5 ) {
+          abbr.pixels[ y * width + x + mouseX ] = c;
         }
       }
     }
-    // update abbr pixel data
-    abbr.updatePixels();
-    
-    // update run window with pixels
-    updatePixels();
+  }
+  // update run window with pixels
+  abbr.updatePixels();
 }
+void mouseReleased() {
 
+  mouseClick = false;
+}
 
 void keyPressed() {
 
@@ -103,7 +154,7 @@ void keyPressed() {
   }
 
   if ( key == 'd' ) {
-  //  // update run window with pixels
-  //  updatePixels();
+    //  // update run window with pixels
+    //  updatePixels();
   }
 }

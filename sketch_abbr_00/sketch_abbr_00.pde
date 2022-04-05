@@ -1,10 +1,9 @@
 // E.Edwards. 2022.
 // a2z :: A :: abbr.
 
-// something what "abbreviate" text
+// something what "abbreviates" text
 
 PImage abbr;
-float bit;
 
 boolean mouseClick = false;
 int clickCount = 0;

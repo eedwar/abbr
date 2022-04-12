@@ -124,32 +124,32 @@ void keyPressed() {
 
     println( " ABBBBBBBBBBBBBBBBRIVATING " );
 
-    //for (int x = 0; x < abbr.width; x++) {
-    //  for (int y = 0; y < abbr.height; y++ ) {
+    for (int x = 0; x < abbr.width; x++) {
+      for (int y = 0; y < abbr.height; y++ ) {
 
-    //    // Calculate the 1D location from a 2D grid
-    //    int loc = x + y * abbr.width;
+        // Calculate the 1D location from a 2D grid
+        int loc = x + y * abbr.width;
 
-    //    // Get the R,G,B values from image
-    //    float r, g, b;
-    //    r = red( abbr.pixels[ loc ] );
-    //    g = green( abbr.pixels[ loc ] );
-    //    b = blue( abbr.pixels[ loc ] );
+        // Get the R,G,B values from image
+        float r, g, b;
+        r = red( abbr.pixels[ loc ] );
+        g = green( abbr.pixels[ loc ] );
+        b = blue( abbr.pixels[ loc ] );
 
-    //    // set pixels to desired
-    //    color c;
-    //    if ( r < 255 ) {
-    //      c = color( r );
+        // set pixels to desired
+        color c;
+        if ( r < 255 ) {
+          c = color( r );
 
-    //      if ( y % 2 == 0 ) {
+          if ( y % 2 == 0 ) {
 
-    //        pixels[ y + mouseY * width + x + mouseX ] = c;
-    //      }
-    //    }
-    //  }
-    //}
-    //// update abbr pixel data
-    //abbr.updatePixels();
+            pixels[ y + mouseY * width + x + mouseX ] = c;
+          }
+        }
+      }
+    }
+    // update abbr pixel data
+    abbr.updatePixels();
   }
 
   if ( key == 'd' ) {

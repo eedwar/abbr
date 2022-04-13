@@ -17,32 +17,21 @@ void setup() {
 
   size( 400, 400 );
 
-  for ( int i = 0; i < 13; i ++ ) {
-    float point = map( i, 0, 12, 10, width - 10 );
-    points.append( point );
-    fill( 255, 28, 126 );
-    circle( points.get(i), height/2, 6 );
-  }
-
+  setPointsPositions();
   println( points );
 }
 
 void draw() {
 
   if ( mousePressed ) {
-
-    mouseHeld += 0.0001;
-
+    
     pointsScaled.clear();
 
-    mouseCount++;
     mouseXPos = mouseX;
 
     // mouse cirlce
     fill( 0 );
     circle( mouseX, mouseY, 10);
-
-
 
     for ( int i = 0; i < points.size(); i++ ) {
 
@@ -57,6 +46,7 @@ void draw() {
       //scaledPoint = points.get( i ) * difference ;
 
       pointsScaled.append( newX );
+      points.set( i, newX );
 
       fill( points.get( i ), - 50 + points.get( i ), 0 );
       circle( pointsScaled.get(i), ( mouseY ), 6 );
@@ -64,10 +54,29 @@ void draw() {
   }
 }
 
+void setPointsPositions() {
+
+  
+  for ( int i = 0; i < 13; i ++ ) {
+    float point = map( random( width ), 0, width, 10, width - 10 );
+    println( point );
+    points.append( point );
+    fill( 255, 28 + ( mouseCount * 20 ), 126 - ( mouseCount * 20 ));
+    circle( points.get(i), ( mouseCount * 4 ) + ( height/2 ) , 6 );
+  }
+  println( mouseCount, points );
+
+}
+void mouseReleased() {
+
+  points.clear();
+  setPointsPositions();
+  
+}
+
 void mousePressed() {
 
   pointsScaled.clear();
-
   mouseCount++;
   mouseXPos = mouseX;
 
@@ -90,7 +99,7 @@ void mousePressed() {
    scaleFMax = maxDif * 0.1;
    
    println( " scale factor min : " +  scaleFMin, " scale factor max : " + scaleFMax );
-   */
+   
 
   for ( int i = 0; i < points.size(); i++ ) {
 
@@ -120,4 +129,5 @@ void mousePressed() {
   }
 
   println( pointsScaled );
+  */
 }

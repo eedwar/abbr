@@ -24,7 +24,7 @@ float mouseXPos;
 PImage input;
 
 // colors
-color pink = color( 255, 28, 126, 10 );
+color pink = color( 255, 28, 126 );
 
 void setup() {
 
@@ -49,7 +49,7 @@ void setup() {
 
 void draw() {
 
-  background( pink );
+  //background( pink, 10  );
   if ( mousePressed ) {
 
     pointsXScaled.clear();
@@ -57,7 +57,7 @@ void draw() {
     mouseXPos = mouseX;
 
     // mouse cirlce
-    //fill( 0 );
+    fill( 255 );
     circle( mouseX, mouseY, 10);
 
     for ( int i = 0; i < posX.size(); i++ ) {
@@ -78,6 +78,8 @@ void draw() {
       fill( pointsXScaled.get( i ), posY.get( i ), 0, 60 );
       circle( pointsXScaled.get(i), posY.get( i ), 1 );
     }
+    fill( pink, 10 );
+    rect( 0, 0, width, height );
   }
 }
 
@@ -119,7 +121,7 @@ void drawInputImageAtPoints() {
     circle( posX.get( i ), posY.get( i ), 1 );
   }
 
-  println( posX, posY );
+  //println( posX, posY );
 }
 
 

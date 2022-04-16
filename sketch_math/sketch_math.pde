@@ -35,7 +35,6 @@ void draw() {
 
     for ( int i = 0; i < points.size(); i++ ) {
 
-
       difference = mouseXPos - points.get( i );
 
 

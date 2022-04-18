@@ -73,8 +73,6 @@ void drawUpdatedImage() {
     scaleFactor = abs( difference ) * ( 0.0001 ); //+ mouseHeld );
     float newX = posX.get( i ) + difference * scaleFactor;
 
-    //scaledPoint = points.get( i ) * difference ;
-
     pointsXScaled.append( newX );
     posX.set( i, newX );
 

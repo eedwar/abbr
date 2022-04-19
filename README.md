@@ -14,14 +14,15 @@
 - Press 's' to save out a frame ( saves to sketch directory )
 - Have fun, esc & replay to start again. 
 
+
+#### A Snazzy Video 
+
+https://user-images.githubusercontent.com/56076239/163980766-ce9a3b84-0421-4c96-99c7-eb0ffe2a95cb.mov
+
+
 #### Some Screengrabs
 ![A abbr. screengrab](https://github.com/eedwar/abbr/blob/for-show-and-tell/sketch_abbr_05/abbr-001144.png)
 
 ![A abbr. screengrab](https://github.com/eedwar/abbr/blob/for-show-and-tell/sketch_abbr_05/abbr-001182.png)
 
 ![A abbr. screengrab](https://github.com/eedwar/abbr/blob/for-show-and-tell/sketch_abbr_05/abbr-001936.png)
-
-
-#### A Snazzy Video 
-
-

@@ -32,7 +32,7 @@ https://user-images.githubusercontent.com/56076239/163980766-ce9a3b84-0421-4c96-
 #### Some things on Improvements to be made
 - For sure some more tidying up could be done
 - There's definitley some repetivative code in there that should be made into functions 
-- Maybe some different could options for the user would be nice 
+- Maybe some different color options for the user would be nice 
 - Also for the user to choose their own text
 
 #### Some notes on why I did what I did 
